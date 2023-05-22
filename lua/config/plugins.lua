@@ -192,7 +192,7 @@ return {
 			},
 		},
 		cmd = { "Glance" },
-		jeys = {
+		keys = {
 			{ "gd", "<cmd>Glance definitions<CR>", desc = "LSP Definition" },
 			{ "gr", "<cmd>Glance references<CR>", desc = "LSP References" },
 			{ "gm", "<cmd>Glance implementations<CR>", desc = "LSP Implementations" },

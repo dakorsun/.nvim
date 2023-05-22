@@ -23,8 +23,9 @@ mason_lsp.setup({
     "graphql",
     "html",
     "jsonls",
-    -- "lua_ls",
+    "lua_ls",
     "tailwindcss",
+    "angularls",
     "tsserver",
     "prismals",
   },
@@ -126,7 +127,7 @@ lspconfig.vuels.setup({
   settings = require("lsp.servers.vuels").settings,
 })
 
-for _, server in ipairs({ "bashls", "emmet_ls", "graphql", "html", "prismals" }) do
+for _, server in ipairs({ "bashls", "emmet_ls", "graphql", "html", "angularls", "prismals" }) do
   lspconfig[server].setup({
     on_attach = on_attach,
     capabilities = capabilities,
