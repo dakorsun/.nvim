@@ -100,7 +100,7 @@ lspconfig.cssls.setup({
 
 lspconfig.eslint.setup({
   capabilities = capabilities,
-  handlers = handlers,
+  -- handlers = handlers,
   on_attach = require("lsp.servers.eslint").on_attach,
   settings = require("lsp.servers.eslint").settings,
 })
