@@ -24,13 +24,13 @@ M.settings = {
     mode = "all"
   },
   format = true,
-  nodePath = "",
+  nodePath = ":pwd",
   onIgnoredFiles = "off",
   packageManager = "npm",
   quiet = false,
   rulesCustomizations = {},
   run = "onType",
-  useESLintClass = false,
+  useESLintClass = true,
   validate = "on",
   workingDirectory = {
     mode = "location"
