@@ -9,5 +9,3 @@ require("lsp.setup")
 require("lsp.functions")
 
 require("snippets.react")
-
-require("dakorsun")
