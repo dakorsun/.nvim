@@ -67,29 +67,28 @@ capabilities.textDocument.foldingRange = {
 
 -- It enables tsserver automatically so no need to call lspconfig.tsserver.setup
 if typescript_ok then
-
-    print(require("lsp.servers.tsserver").handlers)
+  print(require("lsp.servers.tsserver").handlers)
   typescript.setup({
     disable_commands = false, -- prevent the plugin from creating Vim commands
-    debug = false,          -- enable debug logging for commands
+    debug = false,            -- enable debug logging for commands
     -- LSP Config options
     server = {
       capabilities = require("lsp.servers.tsserver").capabilities,
---      handlers = require("lsp.servers.tsserver").handlers,
+      --      handlers = require("lsp.servers.tsserver").handlers,
       on_attach = require("lsp.servers.tsserver").on_attach,
       settings = require("lsp.servers.tsserver").settings,
     },
   })
 end
 
-lspconfig.tailwindcss.setup({
-  capabilities = require("lsp.servers.tailwindcss").capabilities,
-  filetypes = require("lsp.servers.tailwindcss").filetypes,
-  -- handlers = handlers,
-  init_options = require("lsp.servers.tailwindcss").init_options,
-  on_attach = require("lsp.servers.tailwindcss").on_attach,
-  settings = require("lsp.servers.tailwindcss").settings,
-})
+-- lspconfig.tailwindcss.setup({
+--   capabilities = require("lsp.servers.tailwindcss").capabilities,
+--   filetypes = require("lsp.servers.tailwindcss").filetypes,
+--   -- handlers = handlers,
+--   init_options = require("lsp.servers.tailwindcss").init_options,
+--   on_attach = require("lsp.servers.tailwindcss").on_attach,
+--   settings = require("lsp.servers.tailwindcss").settings,
+-- })
 
 lspconfig.cssls.setup({
   capabilities = capabilities,
@@ -103,6 +102,7 @@ lspconfig.eslint.setup({
   -- handlers = handlers,
   on_attach = require("lsp.servers.eslint").on_attach,
   settings = require("lsp.servers.eslint").settings,
+  filetypes = require("lsp.servers.eslint").filetypes,
 })
 
 lspconfig.jsonls.setup({
@@ -112,12 +112,12 @@ lspconfig.jsonls.setup({
   settings = require("lsp.servers.jsonls").settings,
 })
 
- lspconfig.lua_ls.setup({
-   capabilities = capabilities,
-   -- handlers = handlers,
-   on_attach = on_attach,
-   settings = require("lsp.servers.lua_ls").settings,
- })
+lspconfig.lua_ls.setup({
+  capabilities = capabilities,
+  -- handlers = handlers,
+  on_attach = on_attach,
+  settings = require("lsp.servers.lua_ls").settings,
+})
 
 lspconfig.vuels.setup({
   filetypes = require("lsp.servers.vuels").filetypes,
@@ -127,11 +127,10 @@ lspconfig.vuels.setup({
   settings = require("lsp.servers.vuels").settings,
 })
 
-for _, server in ipairs({ "bashls", "emmet_ls", "graphql", "html", "angularls", "prismals" }) do
+for _, server in ipairs({ "bashls", "graphql", --[[ "emmet_ls", "html", ]] "angularls", "prismals" }) do
   lspconfig[server].setup({
     on_attach = on_attach,
     capabilities = capabilities,
     -- handlers = handlers,
   })
 end
-

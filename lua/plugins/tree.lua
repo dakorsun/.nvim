@@ -113,7 +113,7 @@ require("nvim-tree").setup({
 			},
 		},
 	},
-	-- update the focused file on `BufEnter`, un-collapses the folders recursively until it finds the file
+	-- -- update the focused file on `BufEnter`, un-collapses the folders recursively until it finds the file
 	update_focused_file = {
 		-- enables the feature
 		enable = true,
@@ -153,7 +153,7 @@ require("nvim-tree").setup({
 	view = {
 		-- width of the window, can be either a number (columns) or a string in `%`
 		width = TREE_WIDTH,
-		hide_root_folder = false,
+		-- hide_root_folder = false,
 		-- side of the tree, can be one of 'left' | 'right' | 'top' | 'bottom'
 		side = "left",
 		-- mappings = {
@@ -161,8 +161,8 @@ require("nvim-tree").setup({
 		-- 	-- if true, it will only use your list to set the mappings
 		-- 	custom_only = true,
 		-- },
-		number = false,
-		relativenumber = false,
+		number = true,
+		relativenumber = true,
 	},
 })
 

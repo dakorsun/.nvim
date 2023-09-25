@@ -101,7 +101,6 @@ local normal_mode_mappings = {
 
   ['/'] = {
     name = 'Ecovim',
-    ['/'] = { '<cmd>Alpha<CR>',                                 'open dashboard' },
     c = { '<cmd>e $MYVIMRC<CR>',                                'open config' },
     i = { '<cmd>Lazy<CR>',                                      'manage plugins' },
     u = { '<cmd>Lazy update<CR>',                               'update plugins' },
@@ -120,19 +119,6 @@ local normal_mode_mappings = {
     c = { 'comment box' },
     n = { '<cmd>set nonumber!<CR>',                      'line numbers' },
     r = { '<cmd>set norelativenumber!<CR>',              'relative number' },
-    t = { '<cmd>ToggleTerm direction=float<CR>',         'terminal float' },
-  },
-
-  b = {
-    name = 'Buffer',
-    b = { '<cmd>BufferMovePrevious<CR>',                 'Move back' },
-    c = { '<cmd>BufferCloseAllButCurrent<CR>',           'Close but current' },
-    d = { '<cmd>BufferOrderByDirectory<CR>',             'Order by directory' },
-    f = { '<cmd>bfirst<CR>',                             'First buffer' },
-    l = { '<cmd>BufferCloseBuffersLeft<CR>',             'Close Left' },
-    r = { '<cmd>BufferCloseBuffersRight<CR>',            'Close Right' },
-    n = { '<cmd>BufferMoveNext<CR>',                     'Move next' },
-    p = { '<cmd>BufferPick<CR>',                         'Pick Buffer' },
   },
 
   c = {
@@ -141,7 +127,6 @@ local normal_mode_mappings = {
     d = { '<cmd>TroubleToggle<CR>',                           'local diagnostics' },
     D = { '<cmd>Telescope diagnostics wrap_results=true<CR>', 'workspace diagnostics' },
     f = { 'format' },
-    l = { 'line diagnostics' },
     r = { 'rename' },
     R = { 'structural replace' },
     t = { '<cmd>LspToggleAutoFormat<CR>',                     'toggle format on save' },
@@ -170,16 +155,16 @@ local normal_mode_mappings = {
     name = 'Git',
     a = { '<cmd>!git add %:p<CR>',                                              'add current' },
     A = { '<cmd>!git add .<CR>',                                                'add all' },
-    b = { '<cmd>lua require("internal.blame").open()<CR>',                      'blame' },
+    -- b = { '<cmd>lua require("internal.blame").open()<CR>',                      'blame' },
     B = { '<cmd>Telescope git_branches<CR>',                                    'branches' },
-    c = {
-      name = 'Conflict',
-      b = {'<cmd>GitConflictChooseBoth<CR>',                                    'choose both'},
-      n = {'<cmd>GitConflictNextConflict<CR>',                                  'move to next conflict'},
-      o = {'<cmd>GitConflictChooseOurs<CR>',                                    'choose ours'},
-      p = {'<cmd>GitConflictPrevConflict<CR>',                                  'move to prev conflict'},
-      t = {'<cmd>GitConflictChooseTheirs<CR>',                                  'choose theirs'},
-    },
+    -- c = {
+    --   name = 'Conflict',
+    --   b = {'<cmd>GitConflictChooseBoth<CR>',                                    'choose both'},
+    --   n = {'<cmd>GitConflictNextConflict<CR>',                                  'move to next conflict'},
+    --   o = {'<cmd>GitConflictChooseOurs<CR>',                                    'choose ours'},
+    --   p = {'<cmd>GitConflictPrevConflict<CR>',                                  'move to prev conflict'},
+    --   t = {'<cmd>GitConflictChooseTheirs<CR>',                                  'choose theirs'},
+    -- },
     d = { '<cmd>lua require("plugins.git.diffview").toggle_file_history()<CR>', 'diff file' },
     g = { '<cmd>LazyGit<CR>',                                                   'lazygit' },
     h = {
@@ -229,11 +214,6 @@ local normal_mode_mappings = {
     s = { '<cmd>Telescope search_history theme=dropdown<CR>',            'search history' },
   },
 
-  t = {
-    name = 'Table Mode',
-    m = { 'toggle' },
-    t = { 'tableize' },
-  },
 }
 
 local visual_mode_mappings = {
@@ -258,16 +238,6 @@ local visual_mode_mappings = {
       r = "reset hunk",
       s = "stage hunk",
     },
-  },
-
-  p = {
-    name = "Project",
-    r = { 'refactor' },
-  },
-
-  t = {
-    name = "Table Mode",
-    t = { 'tableize' },
   },
 }
 
@@ -336,19 +306,6 @@ local function attach_npm(bufnr)
   })
 end
 
-local function attach_zen(bufnr)
-  wk.register({
-    ["z"] = { '<cmd>ZenMode<CR>',               'zen' },
-  }, {
-    buffer = bufnr,
-    mode = "n", -- NORMAL mode
-    prefix = "<leader>",
-    silent = true, -- use `silent` when creating keymaps
-    noremap = true, -- use `noremap` when creating keymaps
-    nowait = false, -- use `nowait` when creating keymaps
-  })
-end
-
 local function attach_jest(bufnr)
   wk.register({
     j = {
@@ -404,7 +361,6 @@ return {
   attach_markdown = attach_markdown,
   attach_typescript = attach_typescript,
   attach_npm = attach_npm,
-  attach_zen = attach_zen,
   attach_jest = attach_jest,
   attach_spectre = attach_spectre,
   attach_nvim_tree = attach_nvim_tree,
