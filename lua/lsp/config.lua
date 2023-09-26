@@ -123,3 +123,4 @@ for type, icon in pairs(signs) do
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 end
 
+vim.keymap.set("n", "<leader>L", "<cmd>:LspInfo<cr>")

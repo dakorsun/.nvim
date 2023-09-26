@@ -25,6 +25,8 @@ vim.keymap.set('n', '<leader>dj', vim.diagnostic.goto_prev)
 vim.keymap.set('n', '<leader>dk', vim.diagnostic.goto_next)
 vim.keymap.set('n', '<leader>dq', vim.diagnostic.setloclist)
 
+vim.keymap.set('n', '<leader>it', "<cmd>InspectTree<cr>")
+
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
 vim.api.nvim_create_autocmd('LspAttach', {

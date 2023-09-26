@@ -28,6 +28,7 @@ mason_lsp.setup({
     "angularls",
     "tsserver",
     "prismals",
+    "rust_analyzer",
   },
   -- Whether servers that are set up (via lspconfig) should be automatically installed if they're not already installed.
   -- This setting has no relation with the `ensure_installed` setting.
@@ -67,7 +68,6 @@ capabilities.textDocument.foldingRange = {
 
 -- It enables tsserver automatically so no need to call lspconfig.tsserver.setup
 if typescript_ok then
-  print(require("lsp.servers.tsserver").handlers)
   typescript.setup({
     disable_commands = false, -- prevent the plugin from creating Vim commands
     debug = false,            -- enable debug logging for commands
@@ -78,6 +78,11 @@ if typescript_ok then
       on_attach = require("lsp.servers.tsserver").on_attach,
       settings = require("lsp.servers.tsserver").settings,
     },
+    init_options = {
+      preferences = {
+        disableSuggestions = true,
+      }
+    }
   })
 end
 
@@ -125,6 +130,21 @@ lspconfig.vuels.setup({
   init_options = require("lsp.servers.vuels").init_options,
   on_attach = require("lsp.servers.vuels").on_attach,
   settings = require("lsp.servers.vuels").settings,
+})
+
+lspconfig.rust_analyzer.setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+  cmd = {
+    "rustup", "run", "stable", "rust-analyzer"
+  }
+  -- settings = {
+  --   rust = {
+  --     unstable_features = true,
+  --     build_on_save = false,
+  --     all_features = true,
+  --   },
+  -- },
 })
 
 for _, server in ipairs({ "bashls", "graphql", --[[ "emmet_ls", "html", ]] "angularls", "prismals" }) do

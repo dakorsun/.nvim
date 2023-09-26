@@ -15,6 +15,7 @@ require'nvim-treesitter.configs'.setup {
 		"lua",
 		"markdown",
 		"prisma",
+    "rust",
 	},          -- one of "all", or a list of languages
 	sync_install = false,           -- install languages synchronously (only applied to `ensure_installed`)
 	ignore_install = { "haskell" }, -- list of parsers to ignore installing
@@ -25,7 +26,7 @@ require'nvim-treesitter.configs'.setup {
 	},
 
 	incremental_selection = {
-		enable = false,
+		enable = true,
 		keymaps = {
 			init_selection    = "<leader>gnn",
 			node_incremental  = "<leader>gnr",
