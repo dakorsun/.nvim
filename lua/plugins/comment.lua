@@ -55,4 +55,3 @@ require('Comment').setup({
   ---@type function|nil
   post_hook = nil,
 })
-

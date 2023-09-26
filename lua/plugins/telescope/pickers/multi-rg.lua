@@ -104,4 +104,3 @@ return function(opts)
     sorter = require("telescope.sorters").empty(),
   }):find()
 end
-

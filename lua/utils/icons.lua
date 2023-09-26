@@ -142,4 +142,3 @@ local icons = {
 }
 
 return icons
-

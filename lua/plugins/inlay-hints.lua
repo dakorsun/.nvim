@@ -31,4 +31,3 @@ local default_config = {
 }
 
 require("lsp-inlayhints").setup(default_config)
-

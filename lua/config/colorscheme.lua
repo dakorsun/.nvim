@@ -4,53 +4,53 @@ if not present then
 end
 
 require('rose-pine').setup({
-	--- @usage 'auto'|'main'|'moon'|'dawn'
-	variant = 'auto',
-	--- @usage 'main'|'moon'|'dawn'
-	dark_variant = 'main',
-	bold_vert_split = false,
-	dim_nc_background = false,
-	disable_background = true,
-	disable_float_background = false,
-	disable_italics = false,
+  --- @usage 'auto'|'main'|'moon'|'dawn'
+  variant = 'auto',
+  --- @usage 'main'|'moon'|'dawn'
+  dark_variant = 'main',
+  bold_vert_split = false,
+  dim_nc_background = false,
+  disable_background = true,
+  disable_float_background = false,
+  disable_italics = false,
 
-	--- @usage string hex value or named color from rosepinetheme.com/palette
-	groups = {
-		background = 'base',
-		background_nc = '_experimental_nc',
-		panel = 'surface',
-		panel_nc = 'base',
-		border = 'highlight_med',
-		comment = 'muted',
-		link = 'iris',
-		punctuation = 'subtle',
+  --- @usage string hex value or named color from rosepinetheme.com/palette
+  groups = {
+    background = 'base',
+    background_nc = '_experimental_nc',
+    panel = 'surface',
+    panel_nc = 'base',
+    border = 'highlight_med',
+    comment = 'muted',
+    link = 'iris',
+    punctuation = 'subtle',
 
-		error = 'love',
-		hint = 'iris',
-		info = 'foam',
-		warn = 'gold',
+    error = 'love',
+    hint = 'iris',
+    info = 'foam',
+    warn = 'gold',
 
-		headings = {
-			h1 = 'iris',
-			h2 = 'foam',
-			h3 = 'rose',
-			h4 = 'gold',
-			h5 = 'pine',
-			h6 = 'foam',
-		}
-		-- or set all headings at once
-		-- headings = 'subtle'
-	},
+    headings = {
+      h1 = 'iris',
+      h2 = 'foam',
+      h3 = 'rose',
+      h4 = 'gold',
+      h5 = 'pine',
+      h6 = 'foam',
+    }
+    -- or set all headings at once
+    -- headings = 'subtle'
+  },
 
-	-- Change specific vim highlight groups
-	-- https://github.com/rose-pine/neovim/wiki/Recipes
-	highlight_groups = {
-		ColorColumn = { bg = 'rose' },
+  -- Change specific vim highlight groups
+  -- https://github.com/rose-pine/neovim/wiki/Recipes
+  highlight_groups = {
+    ColorColumn = { bg = 'rose' },
 
-		-- Blend colours against the "base" background
-		CursorLine = { bg = 'foam', blend = 10 },
-		StatusLine = { fg = 'love', bg = 'love', blend = 10 },
-	}
+    -- Blend colours against the "base" background
+    CursorLine = { bg = 'foam', blend = 10 },
+    StatusLine = { fg = 'love', bg = 'love', blend = 10 },
+  }
 })
 
 -- Set Colorscheme
@@ -95,28 +95,27 @@ if MyNeovim.colorscheme == "rose-pine" then
   vim.api.nvim_set_hl(0, "BufferOffset", { link = "MyNeovimSecondary" })
 
   -- Completion Menu Colors
---  local highlights = {
---    CmpItemAbbr = { fg = c.dark3, bg = "NONE" },
---    CmpItemKindClass = { fg = c.orange },
---    CmpItemKindConstructor = { fg = c.purple },
---    CmpItemKindFolder = { fg = c.blue2 },
---    CmpItemKindFunction = { fg = c.blue },
---    CmpItemKindInterface = { fg = c.teal, bg = "NONE" },
---    CmpItemKindKeyword = { fg = c.magneta2 },
---    CmpItemKindMethod = { fg = c.red },
---    CmpItemKindReference = { fg = c.red1 },
---    CmpItemKindSnippet = { fg = c.dark3 },
---    CmpItemKindVariable = { fg = c.cyan, bg = "NONE" },
---    CmpItemKindText = { fg = "LightGrey" },
---    CmpItemMenu = { fg = "#C586C0", bg = "NONE" },
---    CmpItemAbbrMatch = { fg = "#569CD6", bg = "NONE" },
---    CmpItemAbbrMatchFuzzy = { fg = "#569CD6", bg = "NONE" },
---  }
---
---  vim.api.nvim_set_hl(0, "CmpBorderedWindow_FloatBorder", { fg = c.blue0 })
---
---  for group, hl in pairs(highlights) do
---    vim.api.nvim_set_hl(0, group, hl)
---  end
+  --  local highlights = {
+  --    CmpItemAbbr = { fg = c.dark3, bg = "NONE" },
+  --    CmpItemKindClass = { fg = c.orange },
+  --    CmpItemKindConstructor = { fg = c.purple },
+  --    CmpItemKindFolder = { fg = c.blue2 },
+  --    CmpItemKindFunction = { fg = c.blue },
+  --    CmpItemKindInterface = { fg = c.teal, bg = "NONE" },
+  --    CmpItemKindKeyword = { fg = c.magneta2 },
+  --    CmpItemKindMethod = { fg = c.red },
+  --    CmpItemKindReference = { fg = c.red1 },
+  --    CmpItemKindSnippet = { fg = c.dark3 },
+  --    CmpItemKindVariable = { fg = c.cyan, bg = "NONE" },
+  --    CmpItemKindText = { fg = "LightGrey" },
+  --    CmpItemMenu = { fg = "#C586C0", bg = "NONE" },
+  --    CmpItemAbbrMatch = { fg = "#569CD6", bg = "NONE" },
+  --    CmpItemAbbrMatchFuzzy = { fg = "#569CD6", bg = "NONE" },
+  --  }
+  --
+  --  vim.api.nvim_set_hl(0, "CmpBorderedWindow_FloatBorder", { fg = c.blue0 })
+  --
+  --  for group, hl in pairs(highlights) do
+  --    vim.api.nvim_set_hl(0, group, hl)
+  --  end
 end
-

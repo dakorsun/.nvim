@@ -3,7 +3,10 @@ local fn = vim.fn
 
 M.file_exists = function(path)
   local f = io.open(path, "r")
-  if f ~= nil then io.close(f) return true else return false end
+  if f ~= nil then
+    io.close(f)
+    return true
+  else return false end
 end
 
 M.get_relative_fname = function()
@@ -125,4 +128,3 @@ M.add_whitespaces = function(number)
 end
 
 return M
-
