@@ -1,7 +1,5 @@
 local ls = require("luasnip")
 
-print("luasnip init")
-
 require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/lua/snippets" })
 
 vim.cmd([[command! LuaSnipEdit :lua require("luasnip.loaders.from_lua").edit_snippet_files()]])
