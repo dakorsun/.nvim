@@ -131,7 +131,6 @@ return {
       "hrsh7th/cmp-cmdline",
       "hrsh7th/cmp-calc",
       "saadparwaiz1/cmp_luasnip",
-      { "L3MON4D3/LuaSnip", dependencies = "rafamadriz/friendly-snippets" },
       {
         "David-Kunz/cmp-npm",
         config = function()
@@ -274,6 +273,10 @@ return {
     "folke/which-key.nvim",
     event = "VeryLazy",
     lazy = true,
+    init = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 300
+    end,
     config = function()
       require("plugins.which-key")
     end,
@@ -332,15 +335,25 @@ return {
       require("plugins.printer")
     end,
   },
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    event = "BufReadPre",
-    config = function()
-      require("plugins.indent")
-    end,
-  },
+  -- {
+  --   "lukas-reineke/indent-blankline.nvim",
+  --   event = "BufReadPre",
+  --   config = function()
+  --     require("plugins.indent")
+  --   end,
+  -- },
 
   -- Snippets & Language & Syntax
+  {
+    "L3MON4D3/LuaSnip",
+    -- follow latest release.
+    version = "2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+    -- config = function()
+    --   require("config.luasnip")
+    -- end
+    -- install jsregexp (optional!).
+    -- build = "make install_jsregexp",
+  },
   {
     "windwp/nvim-autopairs",
     event = "InsertEnter",

@@ -13,8 +13,6 @@ if not snip_status_ok then
   return
 end
 
-require("luasnip/loaders/from_vscode").lazy_load()
-
 -- ╭──────────────────────────────────────────────────────────╮
 -- │ Utils                                                    │
 -- ╰──────────────────────────────────────────────────────────╯
@@ -96,16 +94,16 @@ end
 -- │ Setup                                                    │
 -- ╰──────────────────────────────────────────────────────────╯
 local source_mapping = {
-  npm = MyNeovim.icons.terminal .. "NPM",
+  -- npm = MyNeovim.icons.terminal .. "NPM",
   -- cmp_tabnine = MyNeovim.icons.light,
-  nvim_lsp = MyNeovim.icons.paragraph .. "LSP",
-  buffer = MyNeovim.icons.buffer .. "BUF",
-  nvim_lua = MyNeovim.icons.bomb,
-  luasnip = MyNeovim.icons.snippet .. "SNP",
-  calc = MyNeovim.icons.calculator,
-  path = MyNeovim.icons.folderOpen2,
-  treesitter = MyNeovim.icons.tree,
-  zsh = MyNeovim.icons.terminal .. "ZSH",
+  nvim_lsp = MyNeovim.icons.paragraph .. "[LSP]",
+  buffer = MyNeovim.icons.buffer .. "[Buffer]",
+  nvim_lua = MyNeovim.icons.bomb .. "[NVim Lua]",
+  luasnip = MyNeovim.icons.snippet .. "LuaSnip",
+  -- calc = MyNeovim.icons.calculator,
+  path = MyNeovim.icons.folderOpen2 .. "[Path]",
+  treesitter = MyNeovim.icons.tree .. "[Treesitter]",
+  zsh = MyNeovim.icons.terminal .. "[ZSH]",
 }
 
 local buffer_option = {
@@ -197,9 +195,9 @@ cmp.setup({
   formatting = {
     format = function(entry, vim_item)
       -- Set the highlight group for the Codeium source
-      if entry.source.name == "codeium" then
-        vim_item.kind_hl_group = "CmpItemKindCopilot"
-      end
+      -- if entry.source.name == "codeium" then
+      --   vim_item.kind_hl_group = "CmpItemKindCopilot"
+      -- end
 
       -- Get the item with kind from the lspkind plugin
       local item_with_kind = require("lspkind").cmp_format({
@@ -233,15 +231,10 @@ cmp.setup({
   },
   -- You should specify your *installed* sources.
   sources = {
-    {
-      name = "nvim_lsp",
-      priority = 10,
-      -- Limits LSP results to specific types based on line context (FIelds, Methods, Variables)
-      entry_filter = limit_lsp_types,
-    },
+    { name = "luasnip",  priority = 10, max_item_count = 5 },
+    { name = "nvim_lsp", priority = 10, entry_filter = limit_lsp_types, },
     { name = "npm",      priority = 9 },
     -- { name = "cmp_tabnine", priority = 7, max_num_results = 3 },
-    { name = "luasnip",  priority = 7, max_item_count = 5 },
     { name = "buffer",   priority = 7, keyword_length = 5, option = buffer_option, max_item_count = 5 },
     { name = "nvim_lua", priority = 5 },
     { name = "path",     priority = 4 },
