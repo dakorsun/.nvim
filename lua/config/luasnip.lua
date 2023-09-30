@@ -1,13 +1,14 @@
 local ls = require("luasnip")
 
 require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/lua/snippets" })
+require("luasnip.loaders.from_vscode").lazy_load()
 
 vim.cmd([[command! LuaSnipEdit :lua require("luasnip.loaders.from_lua").edit_snippet_files()]])
 
 local types = require("luasnip.util.types")
 -- Every unspecified option will be set to the default.
 ls.config.set_config({
-  history = true,                           --keep around last snippet local to jump back
+  history = true,                            --keep around last snippet local to jump back
   updateevents = "TextChanged,TextChangedI", --update changes as you type
   enable_autosnippets = true,
   ext_opts = {
@@ -17,9 +18,9 @@ ls.config.set_config({
       },
     },
     [types.insertNode] = {
-    	active = {
-    		virt_text = { { "●", "GruvboxBlue" } },
-    	},
+      active = {
+        virt_text = { { "●", "GruvboxBlue" } },
+      },
     },
   },
 })
@@ -28,19 +29,19 @@ vim.keymap.set({ "i", "s" }, "<C-x>", function()
   if ls.expand_or_jumpable() then
     ls.expand()
   end
-end)
+end, { silent = true })
 
 vim.keymap.set({ "i", "s" }, "<C-l>", function()
   if ls.jumpable(1) then
     ls.jump(1)
   end
-end)
+end, { silent = true })
 
 vim.keymap.set({ "i", "s" }, "<C-g>", function()
   if ls.jumpable(-1) then
     ls.jump(-1)
   end
-end)
+end, { silent = true })
 
 vim.keymap.set({ "i", "s" }, "<C-k>", function()
   if ls.choice_active() then

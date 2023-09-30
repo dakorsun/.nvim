@@ -21,14 +21,14 @@ local check_backspace = function()
   return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
 end
 
-local function deprioritize_snippet(entry1, entry2)
-  if entry1:get_kind() == types.lsp.CompletionItemKind.Snippet then
-    return false
-  end
-  if entry2:get_kind() == types.lsp.CompletionItemKind.Snippet then
-    return true
-  end
-end
+-- local function deprioritize_snippet(entry1, entry2)
+--   if entry1:get_kind() == types.lsp.CompletionItemKind.Snippet then
+--     return false
+--   end
+--   if entry2:get_kind() == types.lsp.CompletionItemKind.Snippet then
+--     return true
+--   end
+-- end
 
 local function limit_lsp_types(entry, ctx)
   local kind = entry:get_kind()
@@ -232,8 +232,8 @@ cmp.setup({
   -- You should specify your *installed* sources.
   sources = {
     { name = "luasnip",  priority = 10, max_item_count = 5 },
-    { name = "nvim_lsp", priority = 10, entry_filter = limit_lsp_types, },
-    { name = "npm",      priority = 9 },
+    { name = "nvim_lsp", priority = 9, entry_filter = limit_lsp_types, },
+    { name = "npm",      priority = 8 },
     -- { name = "cmp_tabnine", priority = 7, max_num_results = 3 },
     { name = "buffer",   priority = 7, keyword_length = 5, option = buffer_option, max_item_count = 5 },
     { name = "nvim_lua", priority = 5 },
@@ -242,7 +242,7 @@ cmp.setup({
   },
   sorting = {
     comparators = {
-      deprioritize_snippet,
+      -- deprioritize_snippet,
       cmp.config.compare.exact,
       cmp.config.compare.locality,
       cmp.config.compare.score,
