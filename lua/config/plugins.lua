@@ -460,7 +460,12 @@ return {
     dependencies = {
       "theHamsta/nvim-dap-virtual-text",
       "rcarriga/nvim-dap-ui",
-      "mxsdev/nvim-dap-vscode-js"
+      "mxsdev/nvim-dap-vscode-js",
+      {
+        "microsoft/vscode-js-debug",
+        opt = true,
+        run = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out"
+      }
     },
   },
 }
