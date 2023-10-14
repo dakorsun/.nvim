@@ -185,6 +185,8 @@ while ({}) {{
 ) --}}}
 cs("cl", { t("console.log("), i(1, ""), t(")") }, { "jcl", "jj" }) -- console.log
 
+-- TODO: snippet for reduce
+
 -- End Refactoring --
 
 return snippets, autosnippets
