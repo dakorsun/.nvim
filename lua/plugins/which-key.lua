@@ -152,6 +152,14 @@ local normal_mode_mappings = {
     w = { 'watches' },
   },
 
+  D = {
+    name = "Database",
+    u = { "<Cmd>DBUIToggle<Cr>", "Toggle UI" },
+    f = { "<Cmd>DBUIFindBuffer<Cr>", "Find buffer" },
+    r = { "<Cmd>DBUIRenameBuffer<Cr>", "Rename buffer" },
+    q = { "<Cmd>DBUILastQueryInfo<Cr>", "Last query info" },
+  },
+
   g = {
     name = 'Git',
     a = { '<cmd>!git add %:p<CR>', 'add current' },

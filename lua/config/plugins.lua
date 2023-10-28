@@ -463,9 +463,22 @@ return {
       "mxsdev/nvim-dap-vscode-js",
       {
         "microsoft/vscode-js-debug",
-        opt = true,
+        lazy = true,
         run = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out"
       }
     },
   },
+
+  -- Databases
+  {
+    'kristijanhusak/vim-dadbod-ui',
+    dependencies = {
+      { 'tpope/vim-dadbod',                     lazy = true },
+      { 'kristijanhusak/vim-dadbod-completion', ft = { 'sql', 'mysql', 'plsql' }, lazy = true },
+    },
+    cmd = { "DBUIToggle", "DBUI", "DBUIAddConnection", "DBUIFindBuffer", "DBUIRenameBuffer", "DBUILastQueryInfo" },
+    init = function()
+      require('plugins.dadbod')
+    end,
+  }
 }
