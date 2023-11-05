@@ -14,8 +14,15 @@ local rep = require("luasnip.extras").rep
 
 local snippets, autosnippets = {}, {} --}}}
 
-local group = vim.api.nvim_create_augroup("Javascript Snippets", { clear = true })
-local file_pattern = "*.js"
+local group = vim.api.nvim_create_augroup("Typescript Snippets", { clear = true })
+local file_pattern = "*.ts"
+
+local same = function(index)
+    return f(function(arg)
+        -- TODO
+        return arg[1]
+    end, { index })
+end
 
 local function cs(trigger, nodes, opts) --{{{
     local snippet = s(trigger, nodes)
@@ -69,9 +76,7 @@ local function cs(trigger, nodes, opts) --{{{
     table.insert(target_table, snippet) -- insert snippet into appropriate table
 end                                     --}}}
 
--- Old Style --
-
-local if_fmt_arg = { --{{{
+local if_fmt_arg = {                    --{{{
     i(1, ""),
     c(2, { i(1, "LHS"), i(1, "10") }),
     c(3, { i(1, "==="), i(1, "<"), i(1, ">"), i(1, "<="), i(1, ">="), i(1, "!==") }),
@@ -146,8 +151,8 @@ table.insert(autosnippets, short_hand_if_statement_return_shortcut)
 table.insert(snippets, function_snippet)
 table.insert(snippets, function_snippet_func)
 
--- Begin Refactoring --
 
+-- Start Refactoring --
 cs( -- for([%w_]+) JS For Loop snippet{{{
     { trig = "for([%w_]+)", regTrig = true, hidden = true },
     fmt(
@@ -183,7 +188,8 @@ while ({}) {{
             i(2, "// TODO:"),
         }
     )
-) --}}}
+)
+
 cs("cl",
     fmta([[console.log(<>)]], {
         c(1, {
@@ -203,9 +209,6 @@ cs("cld",
             i(1),
         })
 )
-
--- TODO: snippet for reduce
-
 -- End Refactoring --
 
 return snippets, autosnippets
