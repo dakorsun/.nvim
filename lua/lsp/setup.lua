@@ -70,7 +70,7 @@ capabilities.textDocument.foldingRange = {
 if typescript_ok then
     typescript.setup({
         disable_commands = false, -- prevent the plugin from creating Vim commands
-        debug = false,        -- enable debug logging for commands
+        debug = false,            -- enable debug logging for commands
         -- LSP Config options
         server = {
             capabilities = require("lsp.servers.tsserver").capabilities,
@@ -147,7 +147,7 @@ lspconfig.rust_analyzer.setup({
     -- },
 })
 
-for _, server in ipairs({ "bashls", "graphql", --[[ "emmet_ls", "html", ]] "angularls", "prismals" }) do
+for _, server in ipairs({ "bashls", "graphql", "emmet_ls", "html", "angularls", "prismals" }) do
     lspconfig[server].setup({
         on_attach = on_attach,
         capabilities = capabilities,
