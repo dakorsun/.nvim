@@ -102,6 +102,19 @@ lspconfig.cssls.setup({
     settings = require("lsp.servers.cssls").settings,
 })
 
+lspconfig.html.setup({
+    capabilities = capabilities,
+    init_options = {
+        configurationSection = { "html", "css", "javascript" },
+        embeddedLanguages = {
+            css = true,
+            javascript = true
+        },
+        -- Supposed to be disabled since most of mine html managed via eslint+prettier
+        provideFormatter = false
+    }
+})
+
 lspconfig.eslint.setup({
     capabilities = capabilities,
     -- handlers = handlers,
