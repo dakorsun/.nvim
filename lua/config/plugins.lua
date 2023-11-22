@@ -28,7 +28,7 @@ return {
     end,
     dependencies = {
       "mrjones2014/nvim-ts-rainbow",
-      "JoosepAlviste/nvim-ts-context-commentstring",
+      -- "JoosepAlviste/nvim-ts-context-commentstring",
       "nvim-treesitter/nvim-treesitter-textobjects",
       "RRethy/nvim-treesitter-textsubjects",
     },

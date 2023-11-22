@@ -41,12 +41,12 @@ require('Comment').setup({
     block = 'gb',
   },
 
-  ---Pre-hook, called before commenting the line
-  ---@type function|nil
-  ---@param ctx Ctx
-  pre_hook = function(ctx)
-    return require('ts_context_commentstring.internal').calculate_commentstring()
-  end,
+  -- ---Pre-hook, called before commenting the line
+  -- ---@type function|nil
+  -- ---@param ctx Ctx
+  -- pre_hook = function(ctx)
+  --   return require('ts_context_commentstring.internal').calculate_commentstring()
+  -- end,
   -- pre_hook = function(ctx)
   --   return require('Comment.jsx').calculate(ctx)
   -- end,
