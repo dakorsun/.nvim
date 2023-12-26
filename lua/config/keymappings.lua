@@ -27,6 +27,7 @@ vim.keymap.set('n', '<leader>dk', vim.diagnostic.goto_next)
 vim.keymap.set('n', '<leader>dq', vim.diagnostic.setloclist)
 
 vim.keymap.set('n', '<leader>it', "<cmd>InspectTree<cr>")
+vim.keymap.set('n', '<leader>ic', "<cmd>ColorizerToggle<cr>")
 
 vim.keymap.set('n', '<leader>qq', utils.toggle_quicklist)
 
