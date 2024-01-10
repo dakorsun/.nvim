@@ -73,6 +73,7 @@ return {
     {
         "ThePrimeagen/harpoon",
         lazy = false,
+        branch = "harpoon2",
         config = function()
             require("plugins.harpoon")
         end,
