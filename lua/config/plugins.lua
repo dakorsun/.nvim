@@ -7,7 +7,7 @@ return {
         priority = 1000,
         config = function()
             -- load the colorscheme here
-            vim.cmd([[colorscheme rose-pine]])
+            -- vim.cmd([[colorscheme rose-pine-moon]])
             require('config.colorscheme')
         end,
     },
@@ -356,11 +356,11 @@ return {
         "L3MON4D3/LuaSnip",
         -- follow latest release.
         version = "2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
-        -- config = function()
-        --   require("config.luasnip")
-        -- end
+        config = function()
+            require("config.luasnip")
+        end,
         -- install jsregexp (optional!).
-        -- build = "make install_jsregexp",
+        build = "make install_jsregexp",
     },
     {
         "windwp/nvim-autopairs",

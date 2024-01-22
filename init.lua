@@ -2,7 +2,7 @@ require('config.MyNeovim')
 
 require("config.options")
 require("config.keymappings")
-require("config.luasnip")
+-- require("config.luasnip")
 require("config.lazy")
 
 require("lsp.config")

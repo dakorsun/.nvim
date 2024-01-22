@@ -9,7 +9,7 @@
 local icons = require("utils.icons")
 
 MyNeovim = {
-  colorscheme = "rose-pine",
+  colorscheme = "rose-pine-moon",
   ui = {
     float = {
       border = "rounded",
