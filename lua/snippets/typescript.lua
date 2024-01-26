@@ -98,13 +98,13 @@ local if_fmt_2 = fmt(
     vim.deepcopy(if_fmt_arg)
 )
 
-local if_snippet = s(
-    { trig = "IF", regTrig = false, hidden = true },
-    c(1, {
-        if_fmt_1,
-        if_fmt_2,
-    })
-)                         --}}}
+-- local if_snippet = s(
+--     { trig = "IF", regTrig = false, hidden = true },
+--     c(1, {
+--         if_fmt_1,
+--         if_fmt_2,
+--     })
+-- )                         --}}}
 local function_fmt = fmt( --{{{
     [[
 function {}({}) {{
