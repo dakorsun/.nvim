@@ -10,7 +10,7 @@ end
 M.on_attach = on_attach;
 
 local filetypes = { "html", "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact",
-    "typescript.tsx", "vue", "svelte", "astro" }
+    "typescript.tsx", "vue", "svelte", "astro", "yaml" }
 
 M.filetypes = filetypes
 

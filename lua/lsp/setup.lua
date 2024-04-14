@@ -29,6 +29,7 @@ mason_lsp.setup({
         "tsserver",
         "prismals",
         "rust_analyzer",
+        "yamlls"
     },
     -- Whether servers that are set up (via lspconfig) should be automatically installed if they're not already installed.
     -- This setting has no relation with the `ensure_installed` setting.
@@ -160,7 +161,7 @@ lspconfig.rust_analyzer.setup({
     -- },
 })
 
-for _, server in ipairs({ "bashls", "graphql", "emmet_ls", "html", "angularls", "prismals" }) do
+for _, server in ipairs({ "bashls", "graphql", "emmet_ls", "html", "angularls", "prismals", "yamlls" }) do
     lspconfig[server].setup({
         on_attach = on_attach,
         capabilities = capabilities,
