@@ -295,8 +295,8 @@ return {
         end,
         ft = { "markdown" },
     },
+    -- TODO: What it does?
     {
-        -- TODO: What it does?
         "Shatur/neovim-session-manager",
         lazy = false,
         config = function()
