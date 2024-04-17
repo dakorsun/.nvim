@@ -27,8 +27,6 @@ return {
             require("plugins.treesitter")
         end,
         dependencies = {
-            "mrjones2014/nvim-ts-rainbow",
-            -- "JoosepAlviste/nvim-ts-context-commentstring",
             "nvim-treesitter/nvim-treesitter-textobjects",
             "RRethy/nvim-treesitter-textsubjects",
         },
@@ -67,13 +65,14 @@ return {
     },
     {
         "gbprod/stay-in-place.nvim",
-        lazy = false,
+        lazy = true,
         config = true, -- run require("stay-in-place").setup()
     },
     {
         "ThePrimeagen/harpoon",
         lazy = false,
         branch = "harpoon2",
+        dependencies = { "nvim-lua/plenary.nvim" },
         config = function()
             require("plugins.harpoon")
         end,
@@ -97,25 +96,6 @@ return {
             { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" },
         },
     },
-
-
-    -- https://github.com/jose-elias-alvarez/null-ls.nvim/issues/1621
-    -- {
-    -- 	"jose-elias-alvarez/null-ls.nvim",
-    -- 	event = "BufNewFile",
-    -- 	dependencies = { "mason.nvim" },
-    -- },
-    -- {
-    -- 	"jay-babu/mason-null-ls.nvim",
-    -- 	event = { "BufReadPre", "BufNewFile" },
-    -- 	dependencies = {
-    -- 		"williamboman/mason.nvim",
-    -- 		"jose-elias-alvarez/null-ls.nvim",
-    -- 	},
-    -- 	config = function()
-    -- 		require("plugins.null-ls")
-    -- 	end,
-    -- },
 
     -- LSP Cmp
     {
@@ -145,6 +125,8 @@ return {
     { "onsails/lspkind-nvim" },
     { "nvim-lua/popup.nvim" },
     { "jose-elias-alvarez/typescript.nvim" },
+    -- TODO: try volarjs
+    -- { "jose-elias-alvarez/typescript.nvim" },
     {
         "axelvc/template-string.nvim",
         event = "InsertEnter",
@@ -164,24 +146,16 @@ return {
         end,
     },
     {
-        "barrett-ruth/import-cost.nvim",
-        build = "sh install.sh yarn",
-        ft = {
-            "javascript",
-            "typescript",
-            "javascriptreact",
-            "typescriptreact",
-        },
-        config = true,
-    },
-    {
         "dmmulroy/tsc.nvim",
         cmd = { "TSC" },
         config = true,
     },
     {
         "folke/trouble.nvim",
-        cmd = { "Trouble", "TroubleToggle" },
+        branch = "dev",
+        -- cmd = { "Trouble diagnostics toggle", "Trouble symbols toggle", "Trouble lsp toggle", "Trouble loclist toggle",
+        --     "Trouble qflist toggle" },
+        cmd = {"Trouble"},
         config = function()
             require("plugins.trouble")
         end
@@ -221,14 +195,12 @@ return {
     -- },
 
     -- General
+    -- TODO deprecated or not? seems not to be working
     { "AndrewRadev/switch.vim",      lazy = false },
     {
         "Wansmer/treesj",
         lazy = true,
         cmd = { "TSJToggle", "TSJSplit", "TSJJoin" },
-        keys = {
-            { "gJ", "<cmd>TSJToggle<CR>", desc = "Toggle Split/Join" },
-        },
         config = function()
             require("treesj").setup({
                 use_default_keymaps = false,
@@ -247,6 +219,7 @@ return {
     { "tpope/vim-repeat",            lazy = false },
     { "tpope/vim-speeddating",       lazy = false },
     { "dhruvasagar/vim-table-mode",  ft = { "markdown" } },
+    -- TODO learn and practice with multi
     {
         "mg979/vim-visual-multi",
         keys = {
@@ -262,6 +235,7 @@ return {
             vim.g.VM_leader = ";"
         end,
     },
+    -- TODO don't understand
     {
         "nacro90/numb.nvim",
         lazy = false,
@@ -289,7 +263,6 @@ return {
             require("plugins.which-key")
         end,
     },
-    { "antoinemadec/FixCursorHold.nvim" }, -- Needed while issue https://github.com/neovim/neovim/issues/12587 is still open
     {
         "rcarriga/nvim-notify",
         config = function()
@@ -313,6 +286,7 @@ return {
             end
         end,
     },
+    -- TODO: investigate in better markdown-preview
     {
         "iamcco/markdown-preview.nvim",
         build = "cd app && npm install",
@@ -343,13 +317,6 @@ return {
             require("plugins.printer")
         end,
     },
-    -- {
-    --   "lukas-reineke/indent-blankline.nvim",
-    --   event = "BufReadPre",
-    --   config = function()
-    --     require("plugins.indent")
-    --   end,
-    -- },
 
     -- Snippets & Language & Syntax
     {
