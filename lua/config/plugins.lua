@@ -153,8 +153,6 @@ return {
     {
         "folke/trouble.nvim",
         branch = "dev",
-        -- cmd = { "Trouble diagnostics toggle", "Trouble symbols toggle", "Trouble lsp toggle", "Trouble loclist toggle",
-        --     "Trouble qflist toggle" },
         cmd = {"Trouble"},
         config = function()
             require("plugins.trouble")
