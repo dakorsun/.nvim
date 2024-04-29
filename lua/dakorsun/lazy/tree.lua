@@ -1,4 +1,4 @@
-local api = require("nvim-tree.api")
+local api = require("nvim-tree").api
 
 local git_icons = {
     unstaged = "",
