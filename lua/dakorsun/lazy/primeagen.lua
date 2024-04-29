@@ -30,3 +30,5 @@ local primeagen_plugins = {
     }
 }
 
+return primeagen_plugins
+

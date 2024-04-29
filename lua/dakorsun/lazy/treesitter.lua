@@ -8,7 +8,7 @@ return {
                 "vimdoc", "javascript", "typescript", "c", "lua", "rust", "angularls",
                 "jsdoc", "bash",
             }, ]]
-            enuser_installed = "all"
+            enuser_installed = "all",
 
             -- Install parsers synchronously (only applied to `ensure_installed`)
             sync_install = false,
