@@ -1,5 +1,6 @@
 require('dakorsun.set')
 require('dakorsun.remap')
+require('lazy_init.lua')
 
 local augroup = vim.api.nvim_create_augroup
 local DakorsunGroup = augroup('dakorsun', {})
