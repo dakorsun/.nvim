@@ -1,13 +1,13 @@
 local api = require("nvim-tree.api")
 
 local git_icons = {
-  unstaged = "",
-  staged = "",
-  unmerged = "",
-  renamed = "➜",
-  untracked = "",
-  deleted = "",
-  ignored = "◌",
+    unstaged = "",
+    staged = "",
+    unmerged = "",
+    renamed = "➜",
+    untracked = "",
+    deleted = "",
+    ignored = "◌",
 }
 
 local TREE_WIDTH = 40
@@ -75,6 +75,9 @@ return {
         "NvimTreeToggle",
         "NvimTreeFindFile",
         "NvimTreeFindFileToggle",
+    },
+    keys = {
+        { "<C-e>", "<cmd>lua require('nvim-tree.api').tree.toggle()<CR>", desc = "NvimTree" },
     },
     config = function()
         require("nvim-tree").setup({
