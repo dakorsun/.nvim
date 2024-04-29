@@ -13,7 +13,8 @@ require 'nvim-treesitter.configs'.setup {
     "json",
     "json5",
     "lua",
-    -- "markdown",
+    "markdown",
+    "markdown_inline",
     "prisma",
     "rust",
   },                             -- one of "all", or a list of languages
