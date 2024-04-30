@@ -112,11 +112,11 @@ return {
                 },
                 icons = {
                     show = {
-                        file = true,
-                        folder = true,
-                        folder_arrow = true,
+                        file = false,
+                        folder = false,
+                        folder_arrow = false,
                         git = true,
-                        modified = true,
+                        modified = false,
                     },
                     glyphs = {
                         git = git_icons,

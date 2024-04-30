@@ -6,10 +6,15 @@ return {
         "LazyGitFilterCurrentFile",
         "LazyGitFilter",
     },
+    dependencies = {
+        "nvim-lua/plenary.nvim"
+    },
+    keys = {
+        { "<leader>lg", "<cmd>LazyGit<cr>",                  desc = "LazyGit" },
+        { "<leader>la", "<cmd>LazyGitFilter<cr>",            desc = "LazyGitFilter" },
+        { "<leader>lc", "<cmd>LazyGitFilterCurrentFile<cr>", desc = "LazyGitFilterCurrentFile" },
+    },
     config = function()
         vim.g.lazygit_floating_window_scaling_factor = 1
-        vim.keymap.set("n", "<leader>gg", "<cmd>LazyGit<CR>")
-        vim.keymap.set("n", "<leader>ga", "<cmd>LazyGitFilter<CR>")
-        vim.keymap.set("n", "<leader>gc", "<cmd>LazyGitFilterCurrentFile<CR>")
-    end,
+    end
 }
