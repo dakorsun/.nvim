@@ -3,10 +3,11 @@ require('dakorsun.remap')
 require('dakorsun.lazy_init')
 
 local augroup = vim.api.nvim_create_augroup
-local DakorsunGroup = augroup('dakorsun', {})
+local DakorsunGroup = augroup('dakorsun', { clear = true })
 
 local autocmd = vim.api.nvim_create_autocmd
 local yank_group = augroup('HighlightYank', {})
+local highlight_augroup = vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = false })
 
 function R(name)
     require("plenary.reload").reload_module(name)
@@ -23,8 +24,8 @@ autocmd('TextYankPost', {
     pattern = '*',
     callback = function()
         vim.highlight.on_yank({
-            higroup = 'IncSearch',
-            timeout = 40,
+            higroup = 'HSearch',
+            timeout = 500,
         })
     end,
 })
@@ -37,19 +38,48 @@ autocmd('TextYankPost', {
 
 autocmd('LspAttach', {
     group = DakorsunGroup,
-    callback = function(e)
-        local opts = { buffer = e.buf }
-        vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
-        vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
-        vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
-        vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
-        vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
-        vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
-        vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
-        vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
-        vim.keymap.set("n", "<leader>dj", function() vim.diagnostic.goto_next() end, opts)
-        vim.keymap.set("n", "<leader>dk", function() vim.diagnostic.goto_prev() end, opts)
+    callback = function(event)
+        local map = function(keys, func, desc)
+            vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
+        end
+        map("gd", function() vim.lsp.buf.definition() end, "[G]oto [D]efinition")
+        map("K", function() vim.lsp.buf.hover() end, "Hover Documentation")
+        map("<leader>vws", function() vim.lsp.buf.workspace_symbol() end, "Workspace symbol")
+        map("<leader>vd", function() vim.diagnostic.open_float() end, "Open Float")
+        map("<leader>vca", function() vim.lsp.buf.code_action() end, "Code Action")
+        map("<leader>vrr", function() vim.lsp.buf.references() end, "References")
+        map("<leader>vrn", function() vim.lsp.buf.rename() end, "Rename")
+        map("<leader>dj", function() vim.diagnostic.goto_next() end, "Goto Next")
+        map("<leader>dk", function() vim.diagnostic.goto_prev() end, "Goto Prev")
+        vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, {desc = "Signature help"})
+        local client = vim.lsp.get_client_by_id(event.data.client_id)
+        if client and client.server_capabilities.documentHighlightProvider then
+            vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+                buffer = event.buf,
+                group = highlight_augroup,
+                callback = vim.lsp.buf.document_highlight,
+            })
+
+            vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
+                buffer = event.buf,
+                group = highlight_augroup,
+                callback = vim.lsp.buf.clear_references,
+            })
+        end
+        if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
+            map('<leader>th', function()
+                vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+            end, '[T]oggle Inlay [H]ints')
+        end
     end
+})
+
+autocmd('LspDetach', {
+    group = vim.api.nvim_create_augroup('kickstart-lsp-detach', { clear = true }),
+    callback = function(event)
+        vim.lsp.buf.clear_references()
+        vim.api.nvim_clear_autocmds({ group = highlight_augroup, buffer = event.buf })
+    end,
 })
 
 -- vim.g.netrw_browse_split = 0

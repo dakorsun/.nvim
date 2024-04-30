@@ -9,6 +9,7 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
 vim.opt.timeoutlen = 300
+vim.opt.updatetime = 250
 
 vim.opt.smartindent = true
 
@@ -33,3 +34,6 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "80"
+
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
