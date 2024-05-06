@@ -27,7 +27,6 @@ return {
             require("mason").setup()
             local ensure_installed = vim.tbl_keys({})
             vim.list_extend(ensure_installed, {
-                'stylua', -- Used to format Lua code
                 "gopls",
                 "bashls",
                 "cssls",
@@ -64,6 +63,49 @@ return {
                                     }
                                 }
                             }
+                        }
+                    end,
+
+                    ["eslint"] = function()
+                        local lspconfig = require("lspconfig")
+                        lspconfig.eslint.setup {
+                            capabilities = capabilities,
+                            filetypes = { "html", "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact",
+                                "typescript.tsx", "vue", "svelte", "astro", "yaml", "yml" },
+                            on_attach = function(client, bufnr)
+                                client.server_capabilities.documentFormattingProvider = true
+                                local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+
+                                buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
+                            end,
+                            settings = {
+                                codeAction = {
+                                    disableRuleComment = {
+                                        enable = true,
+                                        location = "separateLine"
+                                    },
+                                    showDocumentation = {
+                                        enable = true
+                                    }
+                                },
+                                codeActionOnSave = {
+                                    enable = false,
+                                    mode = "all"
+                                },
+                                format = true,
+                                nodePath = ":pwd",
+                                onIgnoredFiles = "off",
+                                packageManager = "npm",
+                                quiet = false,
+                                rulesCustomizations = {},
+                                run = "onType",
+                                useESLintClass = true,
+                                validate = "on",
+                                workingDirectory = {
+                                    mode = "location"
+                                }
+                            }
+
                         }
                     end,
                 }
