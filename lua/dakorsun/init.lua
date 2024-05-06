@@ -23,10 +23,7 @@ autocmd('TextYankPost', {
     group = yank_group,
     pattern = '*',
     callback = function()
-        vim.highlight.on_yank({
-            higroup = 'HSearch',
-            timeout = 500,
-        })
+        vim.highlight.on_yank()
     end,
 })
 
