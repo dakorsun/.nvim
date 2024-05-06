@@ -40,9 +40,10 @@ return {
                 },
             })
 
-            vim.cmd("colorscheme rose-pine")
-
-            ColorMyPencils()
+            -- vim.cmd("colorscheme rose-pine")
+            -- ColorMyPencils()
+            vim.cmd("colorscheme slate")
+            ColorMyPencils("slate")
         end
     },
 
