@@ -22,5 +22,6 @@ return {
                 },
             },
         })
+        vim.keymap.set("n", "<leader>cs", "<cmd>CloakToggle<CR>")
     end
 }
