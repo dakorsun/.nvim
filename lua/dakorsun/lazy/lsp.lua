@@ -1,3 +1,23 @@
+local function has_prettier_configured()
+    local prettier_configs = {
+        ".prettierrc",
+        ".prettierrc.json",
+        ".prettierrc.yaml",
+        ".prettierrc.yml",
+        ".prettierrc.js",
+        ".prettierrc.cjs",
+        "prettier.config.js",
+        "prettier.config.cjs",
+        ".prettierrc.toml"
+    }
+    for _, config in ipairs(prettier_configs) do
+        if vim.fn.glob(config) ~= "" then
+            return true
+        end
+    end
+    return false
+end
+
 return {
     {
         "neovim/nvim-lspconfig",
@@ -151,7 +171,20 @@ return {
                                         },
                                     }
                                 }
-                            }
+                            },
+                            on_attach = function(client, bufnr)
+                                if has_prettier_configured() then
+                                    print('has prettier')
+                                    client.server_capabilities.documentFormattingProvider = false
+                                    vim.keymap.set("n", "<leader>f", function()
+                                        vim.cmd("!prettier --write " .. vim.fn.expand("%"))
+                                    end, { buffer = bufnr })
+                                else
+                                    print('no prettier')
+                                    client.server_capabilities.documentFormattingProvider = true
+                                    vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, { buffer = bufnr })
+                                end
+                            end
                         }
                     end,
                 }
