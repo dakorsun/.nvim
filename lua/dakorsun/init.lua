@@ -48,7 +48,7 @@ autocmd('LspAttach', {
         map("<leader>vrn", function() vim.lsp.buf.rename() end, "Rename")
         map("<leader>dj", function() vim.diagnostic.goto_next() end, "Goto Next")
         map("<leader>dk", function() vim.diagnostic.goto_prev() end, "Goto Prev")
-        vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, {desc = "Signature help"})
+        vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, { desc = "Signature help" })
         local client = vim.lsp.get_client_by_id(event.data.client_id)
         if client and client.server_capabilities.documentHighlightProvider then
             vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
