@@ -25,6 +25,7 @@
   "plenary": { "branch": "master", "commit": "08e301982b9a057110ede7a735dd1b5285eb341f" },
   "plenary.nvim": { "branch": "master", "commit": "08e301982b9a057110ede7a735dd1b5285eb341f" },
   "printer.nvim": { "branch": "master", "commit": "bdd5310075f9d4fe5d4270b7dc75188347fa9353" },
+  "render-markdown": { "branch": "main", "commit": "04cc47fe317c4f08daf0c4c2edb0e6836d936ba1" },
   "rose-pine": { "branch": "main", "commit": "17b466e79479758b332a3cac12544a3ad2be6241" },
   "schemastore.nvim": { "branch": "main", "commit": "3c32d6a7bc56d56d4e3cc16fb21b59465a527aeb" },
   "telescope.nvim": { "branch": "master", "commit": "d90956833d7c27e73c621a61f20b29fdb7122709" },
