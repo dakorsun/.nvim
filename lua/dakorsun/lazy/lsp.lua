@@ -169,6 +169,14 @@ return {
                                             fileMatch = { "ecosystem.json" },
                                             url = "https://json.schemastore.org/pm2-ecosystem.json"
                                         },
+                                        {
+                                            fileMatch = { "components.json" },
+                                            url = "https://ui.shadcn.com/schema.json"
+                                        },
+                                        {
+                                            fileMatch = { "vercel.json" },
+                                            url = "https://openapi.vercel.sh/vercel.json"
+                                        }
                                     }
                                 }
                             },
