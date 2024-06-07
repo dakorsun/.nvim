@@ -51,7 +51,7 @@ return {
                 "gopls",
                 "bashls",
                 "cssls",
-                "eslint",
+                "eslint@4.8.0",
                 "graphql",
                 "html",
                 "jsonls",
@@ -96,8 +96,10 @@ return {
                             on_attach = function(client, bufnr)
                                 client.server_capabilities.documentFormattingProvider = true
                                 local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-
                                 buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
+
+                                -- Keymap for formatting
+                                vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, { buffer = bufnr })
                             end,
                             settings = {
                                 codeAction = {
