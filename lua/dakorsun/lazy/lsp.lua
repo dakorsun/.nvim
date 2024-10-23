@@ -92,7 +92,7 @@ return {
                         lspconfig.eslint.setup {
                             capabilities = capabilities,
                             filetypes = { "html", "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact",
-                                "typescript.tsx", "vue", "svelte", "astro", "yaml", "yml" },
+                                "typescript.tsx", "vue", "svelte", "astro", "yaml", "yml", "svg" },
                             on_attach = function(client, bufnr)
                                 client.server_capabilities.documentFormattingProvider = true
                                 local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
