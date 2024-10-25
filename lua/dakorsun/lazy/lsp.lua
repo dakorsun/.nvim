@@ -58,7 +58,7 @@ return {
                 "lua_ls",
                 "tailwindcss",
                 "angularls",
-                "tsserver",
+                "ts_ls",
                 "prismals",
                 "rust_analyzer",
                 "yamlls"

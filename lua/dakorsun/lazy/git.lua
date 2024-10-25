@@ -8,7 +8,8 @@ return {
             "LazyGitFilter",
         },
         dependencies = {
-            "nvim-lua/plenary.nvim"
+            "nvim-telescope/telescope.nvim",
+            "nvim-lua/plenary.nvim",
         },
         keys = {
             { "<leader>lg", "<cmd>LazyGit<cr>",                  desc = "LazyGit" },
@@ -16,6 +17,7 @@ return {
             { "<leader>lc", "<cmd>LazyGitFilterCurrentFile<cr>", desc = "LazyGitFilterCurrentFile" },
         },
         config = function()
+            require('telescope').load_extension('lazygit')
             vim.g.lazygit_floating_window_scaling_factor = 1
         end
     },
