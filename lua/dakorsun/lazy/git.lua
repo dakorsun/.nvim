@@ -22,6 +22,16 @@ return {
         end
     },
     {
+        "FabijanZulj/blame.nvim",
+        lazy = false,
+        config = function()
+            require('blame').setup {}
+        end,
+        keys = {
+            { "<leader>bg", "<cmd>BlameToggle<cr>", desc = "BlameToggle" },
+        },
+    },
+    {
         "sindrets/diffview.nvim",
         lazy = true,
         enabled = true,
