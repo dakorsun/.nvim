@@ -42,8 +42,8 @@ return {
 
             -- vim.cmd("colorscheme rose-pine")
             -- ColorMyPencils()
-            vim.cmd("colorscheme slate")
-            ColorMyPencils("slate")
+            vim.cmd("colorscheme tokyonight")
+            ColorMyPencils("tokyonight")
         end
     },
 
