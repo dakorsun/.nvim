@@ -82,3 +82,8 @@ autocmd('LspDetach', {
 -- vim.g.netrw_browse_split = 0
 -- vim.g.netrw_banner = 0
 -- vim.g.netrw_winsize = 25
+
+vim.api.nvim_set_hl(0, "LineNr", { fg = "#ffffff" })       -- Change "#ff0000" to your desired color
+vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#ff0000" }) -- Change "#ff0000" to your desired color
+vim.api.nvim_set_hl(0, "LineNrAbove", { fg = "#ff0000" })  -- Relative numbers above cursor
+vim.api.nvim_set_hl(0, "LineNrBelow", { fg = "#ff0000" })  -- Relative numbers below cursor

@@ -26,6 +26,8 @@ return {
                     floats = "dark",   -- style for floating windows
                 },
             })
+            vim.cmd("colorscheme tokyonight")
+            ColorMyPencils("tokyonight")
         end
     },
 
@@ -42,8 +44,6 @@ return {
 
             -- vim.cmd("colorscheme rose-pine")
             -- ColorMyPencils()
-            vim.cmd("colorscheme tokyonight")
-            ColorMyPencils("tokyonight")
         end
     },
 
