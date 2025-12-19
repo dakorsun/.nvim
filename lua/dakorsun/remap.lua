@@ -1,3 +1,28 @@
+local function format_sql()
+    local buf = vim.api.nvim_get_current_buf()
+    local ft = vim.bo[buf].filetype
+    if ft ~= "sql" then
+        return
+    end
+
+    local lines = vim.api.nvim_buf_get_lines(buf, 0, -1, false)
+    local input = table.concat(lines, "\n")
+
+    local output = vim.fn.system({
+        "sqlfluff",
+        "format",
+        "--dialect", "sqlite", -- або прибери, якщо хочеш ansi
+        "-"
+    }, input)
+
+    if vim.v.shell_error ~= 0 then
+        vim.notify(output, vim.log.levels.ERROR)
+        return
+    end
+
+    vim.api.nvim_buf_set_lines(buf, 0, -1, false, vim.split(output, "\n"))
+end
+
 vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
@@ -34,7 +59,13 @@ vim.keymap.set("i", "<C-c>", "<Esc>")
 
 vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
-vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
+vim.keymap.set("n", "<leader>f", function()
+    if vim.bo.filetype == "sql" then
+        format_sql()
+    else
+        vim.lsp.buf.format()
+    end
+end)
 
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
